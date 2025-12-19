@@ -1,4 +1,4 @@
-name: Auto Deploy to Hostinger
+name: Auto Deploy to Hostinger (FTPS)
 
 on:
   push:
@@ -10,27 +10,35 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      # Step 1: Checkout source code
+      - name: Checkout repository
         uses: actions/checkout@v4
 
+      # Step 2: Setup Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 18
 
+      # Step 3: Install dependencies
       - name: Install dependencies
         run: npm install
 
+      # Step 4: Build the project
       - name: Build project
         run: npm run build
 
-      - name: Deploy to Hostinger via FTP
+      # Step 5: Deploy build files to Hostinger using FTPS
+      - name: Deploy to Hostinger via FTPS
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_HOST }}
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASS }}
           port: 21
+          protocol: ftps
+          security: explicit
+          passive: true
           local-dir: dist/
           server-dir: public_html/
           dangerous-clean-slate: true
