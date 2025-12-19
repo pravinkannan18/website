@@ -28,17 +28,14 @@ jobs:
       - name: Build project
         run: npm run build
 
-      # Step 5: Deploy build files to Hostinger using FTPS
-      - name: Deploy to Hostinger via FTPS
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      # Step 5: Deploy build files to Hostinger using SFTP
+      - name: Deploy to Hostinger via SFTP
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
         with:
           server: ${{ secrets.FTP_HOST }}
           username: ${{ secrets.FTP_USER }}
           password: ${{ secrets.FTP_PASS }}
-          port: 21
-          protocol: ftps
-          security: explicit
-          passive: true
-          local-dir: dist/
-          server-dir: public_html/
-          dangerous-clean-slate: true
+          port: 22
+          local_path: ./dist/*
+          remote_path: /public_html/
+          sftp_only: true
