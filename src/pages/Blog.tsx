@@ -1,4 +1,5 @@
 import { Calendar, User, Clock, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 interface BlogPost {
   id: number;
@@ -126,10 +127,13 @@ function Blog() {
                   <span>{featuredPost.readTime}</span>
                 </div>
               </div>
-              <button className="bg-red-600 text-white px-8 py-3 rounded-full hover:bg-red-700 transition-colors font-medium flex items-center space-x-2">
+              <Link 
+                to={`/blog/${featuredPost.id}`}
+                className="bg-red-600 text-white px-8 py-3 rounded-full hover:bg-red-700 transition-colors font-medium flex items-center space-x-2"
+              >
                 <span>Read More</span>
                 <ArrowRight className="w-4 h-4" />
-              </button>
+              </Link>
             </div>
           </div>
         </div>
@@ -177,10 +181,13 @@ function Blog() {
                       <span>{post.readTime}</span>
                     </div>
                   </div>
-                  <button className="w-full bg-gray-100 text-gray-900 px-5 py-2.5 rounded-full hover:bg-red-600 hover:text-white transition-colors font-medium flex items-center justify-center space-x-2">
+                  <Link 
+                    to={`/blog/${post.id}`}
+                    className="w-full bg-gray-100 text-gray-900 px-5 py-2.5 rounded-full hover:bg-red-600 hover:text-white transition-colors font-medium flex items-center justify-center space-x-2"
+                  >
                     <span>Read Article</span>
                     <ArrowRight className="w-4 h-4" />
-                  </button>
+                  </Link>
                 </div>
               </article>
             ))}
