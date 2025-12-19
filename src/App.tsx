@@ -110,7 +110,7 @@ function App() {
                 )}
               </button>
               <button className="hidden sm:block bg-red-600 text-white px-6 py-2.5 rounded-full hover:bg-red-700 transition-colors font-medium">
-                Order Now
+                Place Order
               </button>
             </div>
           </div>
@@ -124,7 +124,7 @@ function App() {
               Authentic Italian Pizza
             </div>
             <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold text-gray-900 leading-tight">
-              Wood-Fired
+              Pravin
               <span className="block text-red-600">Perfection</span>
             </h1>
             <p className="text-xl text-gray-600 leading-relaxed max-w-lg">
