@@ -3,6 +3,7 @@ import { Calendar, User, Clock, ArrowLeft } from 'lucide-react';
 
 interface BlogPostData {
   id: number;
+  slug: string;
   title: string;
   author: string;
   date: string;
@@ -13,11 +14,12 @@ interface BlogPostData {
 }
 
 function BlogPost() {
-  const { id } = useParams();
+  const { slug } = useParams();
 
-  const blogPosts: { [key: number]: BlogPostData } = {
-    1: {
+  const blogPosts: { [key: string]: BlogPostData } = {
+    'the-secret-to-perfect-pizza-dough': {
       id: 1,
+      slug: 'the-secret-to-perfect-pizza-dough',
       title: "The Secret to Perfect Pizza Dough",
       author: "Chef Marco Rossi",
       date: "December 15, 2024",
@@ -26,13 +28,9 @@ function BlogPost() {
       category: "Recipes",
       content: `Pizza is more than just food—it is a universal language of comfort, celebration, and flavor. From humble beginnings on the streets of Naples to becoming a global culinary icon, pizza has earned a permanent place on dining tables across cultures and generations.
 
-## A Brief History of Pizza
 
-The modern pizza originated in Naples, Italy, where flatbreads were topped with tomatoes, olive oil, and herbs as affordable street food for working-class families. The introduction of mozzarella cheese transformed pizza into the dish we recognize today. By the late 19th century, pizza gained royal recognition, and soon after, Italian immigrants carried it across Europe and into America.
 
-## Why Pizza Is Loved Everywhere
 
-Pizza's popularity comes from its simplicity and flexibility. A basic crust becomes a canvas for endless creativity—cheese, vegetables, meats, sauces, and spices can be combined to suit any taste. Whether it's a thin-crust Margherita or a loaded deep-dish slice, pizza adapts effortlessly to local flavors and preferences.
 
 ## Types of Pizza You Should Know
 
@@ -79,321 +77,64 @@ Today's pizza is evolving. Whole-wheat crusts, vegan cheese, gluten-free bases, 
 
 Pizza continues to evolve while staying true to its roots. Its ability to bring people together—across cultures, ages, and tastes—makes it one of the most loved foods in the world. No matter how it's served, pizza always delivers happiness, one slice at a time.`
     },
-    2: {
+    'a-journey-through-italian-pizza-history': {
       id: 2,
+      slug: 'a-journey-through-italian-pizza-history',
       title: "A Journey Through Italian Pizza History",
       author: "Sofia Bianchi",
       date: "December 12, 2024",
       readTime: "8 min read",
       image: "https://images.pexels.com/photos/1653877/pexels-photo-1653877.jpeg",
       category: "Culture",
-      content: `Pizza is more than just food—it is a universal language of comfort, celebration, and flavor. From humble beginnings on the streets of Naples to becoming a global culinary icon, pizza has earned a permanent place on dining tables across cultures and generations.
-
-## A Brief History of Pizza
-
-The modern pizza originated in Naples, Italy, where flatbreads were topped with tomatoes, olive oil, and herbs as affordable street food for working-class families. The introduction of mozzarella cheese transformed pizza into the dish we recognize today. By the late 19th century, pizza gained royal recognition, and soon after, Italian immigrants carried it across Europe and into America.
-
-## Why Pizza Is Loved Everywhere
-
-Pizza's popularity comes from its simplicity and flexibility. A basic crust becomes a canvas for endless creativity—cheese, vegetables, meats, sauces, and spices can be combined to suit any taste. Whether it's a thin-crust Margherita or a loaded deep-dish slice, pizza adapts effortlessly to local flavors and preferences.
-
-## Types of Pizza You Should Know
-
-**Margherita** – Classic tomato, mozzarella, and basil
-
-**Pepperoni** – A global favorite with bold flavors
-
-**Veggie Supreme** – Fresh vegetables with balanced seasoning
-
-**BBQ Chicken** – Smoky, sweet, and savory
-
-**Cheese Burst** – For true cheese lovers
-
-Each variety tells a different story, but all deliver the same satisfaction.
-
-## The Science Behind a Perfect Pizza
-
-A great pizza balances three key elements:
-
-**Crust** – Crisp outside, soft inside
-
-**Sauce** – Tangy, rich, and well-seasoned
-
-**Cheese & Toppings** – Melted evenly with complementary textures
-
-When these elements align, pizza becomes an experience—not just a meal.
-
-## Pizza in Today's Lifestyle
-
-Pizza fits perfectly into modern life. It's ideal for:
-
-- Family dinners
-- Office lunches
-- Weekend parties
-- Late-night cravings
-
-With online ordering, fast delivery, and customizable options, pizza has become the most convenient comfort food of our time.
-
-## Health-Conscious Pizza Choices
-
-Today's pizza is evolving. Whole-wheat crusts, vegan cheese, gluten-free bases, and fresh organic toppings allow pizza lovers to enjoy their favorite dish without compromising health goals.
-
-## Final Thoughts
-
-Pizza continues to evolve while staying true to its roots. Its ability to bring people together—across cultures, ages, and tastes—makes it one of the most loved foods in the world. No matter how it's served, pizza always delivers happiness, one slice at a time.`
+      content: `This blog post is currently being prepared. Check back soon for amazing content about Italian pizza history and culture!`
     },
-    3: {
+    'top-10-pizza-toppings-for-2024': {
       id: 3,
+      slug: 'top-10-pizza-toppings-for-2024',
       title: "Top 10 Pizza Toppings for 2024",
       author: "Chef Marco Rossi",
       date: "December 10, 2024",
       readTime: "6 min read",
       image: "https://images.pexels.com/photos/3762069/pexels-photo-3762069.jpeg",
       category: "Trends",
-      content: `Pizza is more than just food—it is a universal language of comfort, celebration, and flavor. From humble beginnings on the streets of Naples to becoming a global culinary icon, pizza has earned a permanent place on dining tables across cultures and generations.
-
-## A Brief History of Pizza
-
-The modern pizza originated in Naples, Italy, where flatbreads were topped with tomatoes, olive oil, and herbs as affordable street food for working-class families. The introduction of mozzarella cheese transformed pizza into the dish we recognize today. By the late 19th century, pizza gained royal recognition, and soon after, Italian immigrants carried it across Europe and into America.
-
-## Why Pizza Is Loved Everywhere
-
-Pizza's popularity comes from its simplicity and flexibility. A basic crust becomes a canvas for endless creativity—cheese, vegetables, meats, sauces, and spices can be combined to suit any taste. Whether it's a thin-crust Margherita or a loaded deep-dish slice, pizza adapts effortlessly to local flavors and preferences.
-
-## Types of Pizza You Should Know
-
-**Margherita** – Classic tomato, mozzarella, and basil
-
-**Pepperoni** – A global favorite with bold flavors
-
-**Veggie Supreme** – Fresh vegetables with balanced seasoning
-
-**BBQ Chicken** – Smoky, sweet, and savory
-
-**Cheese Burst** – For true cheese lovers
-
-Each variety tells a different story, but all deliver the same satisfaction.
-
-## The Science Behind a Perfect Pizza
-
-A great pizza balances three key elements:
-
-**Crust** – Crisp outside, soft inside
-
-**Sauce** – Tangy, rich, and well-seasoned
-
-**Cheese & Toppings** – Melted evenly with complementary textures
-
-When these elements align, pizza becomes an experience—not just a meal.
-
-## Pizza in Today's Lifestyle
-
-Pizza fits perfectly into modern life. It's ideal for:
-
-- Family dinners
-- Office lunches
-- Weekend parties
-- Late-night cravings
-
-With online ordering, fast delivery, and customizable options, pizza has become the most convenient comfort food of our time.
-
-## Health-Conscious Pizza Choices
-
-Today's pizza is evolving. Whole-wheat crusts, vegan cheese, gluten-free bases, and fresh organic toppings allow pizza lovers to enjoy their favorite dish without compromising health goals.
-
-## Final Thoughts
-
-Pizza continues to evolve while staying true to its roots. Its ability to bring people together—across cultures, ages, and tastes—makes it one of the most loved foods in the world. No matter how it's served, pizza always delivers happiness, one slice at a time.`
+      content: `This blog post is currently being prepared. Check back soon for amazing content about the top pizza toppings trending in 2024!`
     },
-    4: {
+    'wood-fired-vs-gas-ovens': {
       id: 4,
+      slug: 'wood-fired-vs-gas-ovens',
       title: "Wood-Fired vs. Gas Ovens: Which is Better?",
       author: "Giovanni Russo",
       date: "December 8, 2024",
       readTime: "7 min read",
       image: "https://images.pexels.com/photos/1566837/pexels-photo-1566837.jpeg",
       category: "Equipment",
-      content: `Pizza is more than just food—it is a universal language of comfort, celebration, and flavor. From humble beginnings on the streets of Naples to becoming a global culinary icon, pizza has earned a permanent place on dining tables across cultures and generations.
-
-## A Brief History of Pizza
-
-The modern pizza originated in Naples, Italy, where flatbreads were topped with tomatoes, olive oil, and herbs as affordable street food for working-class families. The introduction of mozzarella cheese transformed pizza into the dish we recognize today. By the late 19th century, pizza gained royal recognition, and soon after, Italian immigrants carried it across Europe and into America.
-
-## Why Pizza Is Loved Everywhere
-
-Pizza's popularity comes from its simplicity and flexibility. A basic crust becomes a canvas for endless creativity—cheese, vegetables, meats, sauces, and spices can be combined to suit any taste. Whether it's a thin-crust Margherita or a loaded deep-dish slice, pizza adapts effortlessly to local flavors and preferences.
-
-## Types of Pizza You Should Know
-
-**Margherita** – Classic tomato, mozzarella, and basil
-
-**Pepperoni** – A global favorite with bold flavors
-
-**Veggie Supreme** – Fresh vegetables with balanced seasoning
-
-**BBQ Chicken** – Smoky, sweet, and savory
-
-**Cheese Burst** – For true cheese lovers
-
-Each variety tells a different story, but all deliver the same satisfaction.
-
-## The Science Behind a Perfect Pizza
-
-A great pizza balances three key elements:
-
-**Crust** – Crisp outside, soft inside
-
-**Sauce** – Tangy, rich, and well-seasoned
-
-**Cheese & Toppings** – Melted evenly with complementary textures
-
-When these elements align, pizza becomes an experience—not just a meal.
-
-## Pizza in Today's Lifestyle
-
-Pizza fits perfectly into modern life. It's ideal for:
-
-- Family dinners
-- Office lunches
-- Weekend parties
-- Late-night cravings
-
-With online ordering, fast delivery, and customizable options, pizza has become the most convenient comfort food of our time.
-
-## Health-Conscious Pizza Choices
-
-Today's pizza is evolving. Whole-wheat crusts, vegan cheese, gluten-free bases, and fresh organic toppings allow pizza lovers to enjoy their favorite dish without compromising health goals.
-
-## Final Thoughts
-
-Pizza continues to evolve while staying true to its roots. Its ability to bring people together—across cultures, ages, and tastes—makes it one of the most loved foods in the world. No matter how it's served, pizza always delivers happiness, one slice at a time.`
+      content: `This blog post is currently being prepared. Check back soon for amazing content about wood-fired vs. gas ovens!`
     },
-    5: {
+    'the-art-of-pizza-pairing': {
       id: 5,
+      slug: 'the-art-of-pizza-pairing',
       title: "The Art of Pizza Pairing: Wine & Beer",
       author: "Sofia Bianchi",
       date: "December 5, 2024",
       readTime: "5 min read",
       image: "https://images.pexels.com/photos/2147491/pexels-photo-2147491.jpeg",
       category: "Pairings",
-      content: `Pizza is more than just food—it is a universal language of comfort, celebration, and flavor. From humble beginnings on the streets of Naples to becoming a global culinary icon, pizza has earned a permanent place on dining tables across cultures and generations.
-
-
-## Why Pizza Is Loved Everywhere
-
-Pizza's popularity comes from its simplicity and flexibility. A basic crust becomes a canvas for endless creativity—cheese, vegetables, meats, sauces, and spices can be combined to suit any taste. Whether it's a thin-crust Margherita or a loaded deep-dish slice, pizza adapts effortlessly to local flavors and preferences.
-
-## Types of Pizza You Should Know
-
-**Margherita** – Classic tomato, mozzarella, and basil
-
-**Pepperoni** – A global favorite with bold flavors
-
-**Veggie Supreme** – Fresh vegetables with balanced seasoning
-
-**BBQ Chicken** – Smoky, sweet, and savory
-
-**Cheese Burst** – For true cheese lovers
-
-Each variety tells a different story, but all deliver the same satisfaction.
-
-## The Science Behind a Perfect Pizza
-
-A great pizza balances three key elements:
-
-**Crust** – Crisp outside, soft inside
-
-**Sauce** – Tangy, rich, and well-seasoned
-
-**Cheese & Toppings** – Melted evenly with complementary textures
-
-When these elements align, pizza becomes an experience—not just a meal.
-
-## Pizza in Today's Lifestyle
-
-Pizza fits perfectly into modern life. It's ideal for:
-
-- Family dinners
-- Office lunches
-- Weekend parties
-- Late-night cravings
-
-With online ordering, fast delivery, and customizable options, pizza has become the most convenient comfort food of our time.
-
-## Health-Conscious Pizza Choices
-
-Today's pizza is evolving. Whole-wheat crusts, vegan cheese, gluten-free bases, and fresh organic toppings allow pizza lovers to enjoy their favorite dish without compromising health goals.
-
-## Final Thoughts
-
-Pizza continues to evolve while staying true to its roots. Its ability to bring people together—across cultures, ages, and tastes—makes it one of the most loved foods in the world. No matter how it's served, pizza always delivers happiness, one slice at a time.`
+      content: `This blog post is currently being prepared. Check back soon for amazing content about pairing pizza with wine and beer!`
     },
-    6: {
+    'behind-the-scenes-at-bella-pizza': {
       id: 6,
+      slug: 'behind-the-scenes-at-bella-pizza',
       title: "Behind the Scenes: A Day at Bella Pizza",
       author: "Chef Marco Rossi",
       date: "December 1, 2024",
       readTime: "10 min read",
       image: "https://images.pexels.com/photos/1653877/pexels-photo-1653877.jpeg",
       category: "Behind the Scenes",
-      content: `Pizza is more than just food—it is a universal language of comfort, celebration, and flavor. From humble beginnings on the streets of Naples to becoming a global culinary icon, pizza has earned a permanent place on dining tables across cultures and generations.
-
-## A Brief History of Pizza
-
-The modern pizza originated in Naples, Italy, where flatbreads were topped with tomatoes, olive oil, and herbs as affordable street food for working-class families. The introduction of mozzarella cheese transformed pizza into the dish we recognize today. By the late 19th century, pizza gained royal recognition, and soon after, Italian immigrants carried it across Europe and into America.
-
-## Why Pizza Is Loved Everywhere
-
-Pizza's popularity comes from its simplicity and flexibility. A basic crust becomes a canvas for endless creativity—cheese, vegetables, meats, sauces, and spices can be combined to suit any taste. Whether it's a thin-crust Margherita or a loaded deep-dish slice, pizza adapts effortlessly to local flavors and preferences.
-
-## Types of Pizza You Should Know
-
-**Margherita** – Classic tomato, mozzarella, and basil
-
-**Pepperoni** – A global favorite with bold flavors
-
-**Veggie Supreme** – Fresh vegetables with balanced seasoning
-
-**BBQ Chicken** – Smoky, sweet, and savory
-
-**Cheese Burst** – For true cheese lovers
-
-Each variety tells a different story, but all deliver the same satisfaction.
-
-## The Science Behind a Perfect Pizza
-
-A great pizza balances three key elements:
-
-**Crust** – Crisp outside, soft inside
-
-**Sauce** – Tangy, rich, and well-seasoned
-
-**Cheese & Toppings** – Melted evenly with complementary textures
-
-When these elements align, pizza becomes an experience—not just a meal.
-
-## Pizza in Today's Lifestyle
-
-Pizza fits perfectly into modern life. It's ideal for:
-
-- Family dinners
-- Office lunches
-- Weekend parties
-- Late-night cravings
-
-With online ordering, fast delivery, and customizable options, pizza has become the most convenient comfort food of our time.
-
-## Health-Conscious Pizza Choices
-
-Today's pizza is evolving. Whole-wheat crusts, vegan cheese, gluten-free bases, and fresh organic toppings allow pizza lovers to enjoy their favorite dish without compromising health goals.
-
-## Final Thoughts
-
-Pizza continues to evolve while staying true to its roots. Its ability to bring people together—across cultures, ages, and tastes—makes it one of the most loved foods in the world. No matter how it's served, pizza always delivers happiness, one slice at a time.`
+      content: `This blog post is currently being prepared. Check back soon for amazing content about a day at Bella Pizza!`
     }
   };
 
-  const post = blogPosts[Number(id) || 1];
+  const post = blogPosts[slug || 'the-secret-to-perfect-pizza-dough'];
 
   if (!post) {
     return (

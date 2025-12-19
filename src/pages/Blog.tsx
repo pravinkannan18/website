@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 interface BlogPost {
   id: number;
+  slug: string;
   title: string;
   excerpt: string;
   author: string;
@@ -16,6 +17,7 @@ function Blog() {
   const blogPosts: BlogPost[] = [
     {
       id: 1,
+      slug: 'the-secret-to-perfect-pizza-dough',
       title: "The Secret to Perfect Pizza Dough",
       excerpt: "Learn the art of crafting the perfect pizza dough with our master chef's time-tested techniques and secret ingredients that make all the difference.",
       author: "Chef Marco Rossi",
@@ -26,6 +28,7 @@ function Blog() {
     },
     {
       id: 2,
+      slug: 'a-journey-through-italian-pizza-history',
       title: "A Journey Through Italian Pizza History",
       excerpt: "Discover the fascinating history of pizza, from its humble origins in Naples to becoming one of the world's most beloved dishes.",
       author: "Sofia Bianchi",
@@ -36,6 +39,7 @@ function Blog() {
     },
     {
       id: 3,
+      slug: 'top-10-pizza-toppings-for-2024',
       title: "Top 10 Pizza Toppings for 2024",
       excerpt: "From classic favorites to innovative new combinations, explore the most popular pizza toppings that are trending this year.",
       author: "Chef Marco Rossi",
@@ -46,6 +50,7 @@ function Blog() {
     },
     {
       id: 4,
+      slug: 'wood-fired-vs-gas-ovens',
       title: "Wood-Fired vs. Gas Ovens: Which is Better?",
       excerpt: "An in-depth comparison of traditional wood-fired ovens and modern gas ovens, and how each affects the flavor and texture of your pizza.",
       author: "Giovanni Russo",
@@ -56,6 +61,7 @@ function Blog() {
     },
     {
       id: 5,
+      slug: 'the-art-of-pizza-pairing',
       title: "The Art of Pizza Pairing: Wine & Beer",
       excerpt: "Expert tips on selecting the perfect beverages to complement your favorite pizza styles and enhance your dining experience.",
       author: "Sofia Bianchi",
@@ -66,6 +72,7 @@ function Blog() {
     },
     {
       id: 6,
+      slug: 'behind-the-scenes-at-bella-pizza',
       title: "Behind the Scenes: A Day at Bella Pizza",
       excerpt: "Get an exclusive look at what happens behind the scenes at Bella Pizza, from dough preparation to the final product.",
       author: "Chef Marco Rossi",
@@ -128,7 +135,7 @@ function Blog() {
                 </div>
               </div>
               <Link 
-                to={`/blog/${featuredPost.id}`}
+                to={`/blog/${featuredPost.slug}`}
                 className="bg-red-600 text-white px-8 py-3 rounded-full hover:bg-red-700 transition-colors font-medium flex items-center space-x-2"
               >
                 <span>Read More</span>
@@ -182,7 +189,7 @@ function Blog() {
                     </div>
                   </div>
                   <Link 
-                    to={`/blog/${post.id}`}
+                    to={`/blog/${post.slug}`}
                     className="w-full bg-gray-100 text-gray-900 px-5 py-2.5 rounded-full hover:bg-red-600 hover:text-white transition-colors font-medium flex items-center justify-center space-x-2"
                   >
                     <span>Read Article</span>
